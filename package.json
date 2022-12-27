@@ -1,0 +1,26 @@
+{
+  "name": "photo-upload-website",
+  "version": "1.0.0",
+  "description": "photo upload website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlhylmz/photo-upload-website.git"
+  },
+  "keywords": [
+    "photo",
+    "upload"
+  ],
+  "author": "MLHYLMZ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlhylmz/photo-upload-website/issues"
+  },
+  "homepage": "https://github.com/mlhylmz/photo-upload-website#readme",
+  "devDependencies": {
+    "prettier": "2.8.1"
+  }
+}
