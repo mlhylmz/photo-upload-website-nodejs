@@ -1,30 +1,27 @@
 const express = require('express');
 const nodemon = require('nodemon');
+const path = require('path');
 
 const app = express();
 
-const myLogger = (req, res, next) => {
-    console.log('middleware log');
-    next();
-};
-
 // MIDDLEWARE
 app.use(express.static('public'));
-app.use(myLogger);
-
-
-const port = 3000;
 
 // LISTENING
+const port = 3000;
 app.listen(port, () => {
     console.log(`Dinleniyor port :${port}`);
 });
 
-app.get('/', (req, res) => {
-    const photo = {
-        id: 1,
-        name: 'Photo Name',
-        description: 'Photo Desc',
-    };
-    res.send(photo);
+app.get('/index.html', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'temp/index.html'));
+});
+app.get('/about.html', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'temp/about.html'));
+});
+app.get('/contact.html', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'temp/contact.html'));
+});
+app.get('/video-page.html', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'temp/video-page.html'));
 });
