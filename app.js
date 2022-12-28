@@ -18,13 +18,13 @@ app.listen(port, () => {
 });
 
 // ROUTES
-app.get('/index', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index');
 });
 app.get('/about', (req, res) => {
     res.render('about');
 });
-app.get('/addphoto', (req, res) => {
+app.get('/add', (req, res) => {
     res.render('add');
 });
 app.get('/video-page', (req, res) => {
