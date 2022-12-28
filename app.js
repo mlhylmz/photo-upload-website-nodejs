@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const app = express();
 
 // TEMPLATE ENGINE
-app.set("view engine", "ejs")
+app.set('view engine', 'ejs');
 
 // MIDDLEWARE
 app.use(express.static('public'));
@@ -17,15 +17,16 @@ app.listen(port, () => {
     console.log(`Dinleniyor port :${port}`);
 });
 
-app.get('/index.html', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'temp/index.html'));
+// ROUTES
+app.get('/index', (req, res) => {
+    res.render('index');
 });
-app.get('/about.html', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'temp/about.html'));
+app.get('/about', (req, res) => {
+    res.render('about');
 });
-app.get('/contact.html', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'temp/contact.html'));
+app.get('/addphoto', (req, res) => {
+    res.render('add');
 });
-app.get('/video-page.html', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'temp/video-page.html'));
+app.get('/video-page', (req, res) => {
+    res.render('video-page');
 });
