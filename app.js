@@ -1,7 +1,8 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const nodemon = require('nodemon');
-var methodOverride = require('method-override');
+const methodOverride = require('method-override');
+
 const path = require('path');
 const ejs = require('ejs');
 const fs = require('fs');
@@ -110,14 +111,14 @@ app.post('/photos', async (req, res) => {
     
 });*/
 
-app.put('/photos/:id', async (req, res) => {
+app.post('/photos/:id', async (req, res) => {
     console.log('put geldi: ' + req.params.id);
 
     const photo = await Photo.findOne({ _id: req.params.id });
     console.log('photo: ' + photo);
-    console.log('req body isim: ' + req.body);
-    //photo.title = req.body.title;
-    //photo.description = req.body.description;
+    console.log('req body isim: ' + req.body.desc);
+    photo.title = req.body.title;
+    photo.description = req.body.desc;
     photo.save();
 
     res.redirect(`/photos/${req.params.id}`);
