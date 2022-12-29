@@ -46,34 +46,4 @@ app.delete('/photos/:id', photoController.deletePhoto);
 app.get('/photos/edit/:id', pageController.getEditPage);
 app.get('/about', pageController.getAboutPage);
 app.get('/add', pageController.getAddPhotoPage);
-/* //OLD DATABSE FILE UPLOAD
-app.post('/photos', async (req, res) => {
-    console.log(req.files);
-    //await Photo.create(req.body);
-    //res.redirect('/');
 
-    const uploadDir = 'public/uploads';
-    if(!fs.existsSync(uploadDir)){
-        fs.mkdirSync(uploadDir)
-    }
-
-    let uploadedImage = req.files.image;
-    console.log("req files : " + uploadedImage);
-    
-    
-
-    let uploadPath = __dirname + '/public/uploads/' + uploadedImage.name;
-
-    console.log(uploadPath);
-
-    uploadedImage.mv(uploadPath, async () => {
-        await Photo.create({
-            ...req.body,
-            image: '/uploads/' + uploadedImage.name,
-        });
-        
-        res.redirect('/');
-    });
-    
-    
-});*/

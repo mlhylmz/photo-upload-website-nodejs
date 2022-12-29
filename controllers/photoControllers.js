@@ -17,11 +17,7 @@ exports.getAllPhotos = async (req, res) => {
         current: page,
         pages: Math.ceil(totalPhotos / photosPerPage),
     });
-    /*
-    const photos = await Photo.find({});
-    res.render('index', {
-        photos,
-    });*/
+
 };
 
 exports.getOnePhoto = async (req, res) => {
@@ -32,7 +28,6 @@ exports.getOnePhoto = async (req, res) => {
 };
 
 exports.createPhoto = async (req, res) => {
-    console.log(req.files);
 
     const uploadDir = 'public/uploads';
     if (!fs.existsSync(uploadDir)) {
@@ -64,19 +59,14 @@ exports.updatePhoto = async (req, res) => {
     photo.title = req.body.title;
     photo.description = req.body.desc;
     photo.save();
-    console.log('log update photo');
 
     res.redirect(`/photos/${req.params.id}`);
 };
 
 exports.deletePhoto = async (req, res) => {
-    console.log(req.params.id);
     const photo = await Photo.findOne({ _id: req.params.id });
     let deletePath = __dirname + '/../public' + photo.image;
     fs.unlinkSync(deletePath);
-    console.log('log delete photo');
-
     await Photo.findByIdAndRemove(req.params.id);
-
     res.redirect('/');
 };
